@@ -89,12 +89,14 @@ The app will be available at http://localhost:3001.
 
 ## Example Screenshots
 **Home Page**
-![alt text](image-1.png)
-![alt text](image-3.png)
+![image](https://github.com/user-attachments/assets/fddcd079-2bad-492e-a41f-639a27943642)
+![image](https://github.com/user-attachments/assets/532ced22-1489-4c81-bac2-7594ef8e650c)
+
 
 **Message Classification**
-![alt text](image-2.png)
-![alt text](image-4.png)
+![image](https://github.com/user-attachments/assets/4b451ada-cec1-4efc-b3ae-83d7d8c294b1)
+![image](https://github.com/user-attachments/assets/34dc7c56-f12d-406e-b546-7a315d98ddc1)
+
 ---
 
 ## Improvements
