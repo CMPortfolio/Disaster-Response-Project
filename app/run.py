@@ -4,15 +4,21 @@ import pandas as pd
 from flask import Flask, render_template, request
 from sqlalchemy import create_engine
 import pickle
+import os
 
 app = Flask(__name__)
 
+# Set base directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Load data
-engine = create_engine('sqlite:///../data/DisasterResponse.db')
+database_path = os.path.join(BASE_DIR, '../data/DisasterResponse.db')
+engine = create_engine(f'sqlite:///{database_path}')
 df = pd.read_sql_table('DisasterResponse', engine)
 
 # Load model
-model = pickle.load(open("../models/classifier.pkl", "rb"))
+model_path = os.path.join(BASE_DIR, '../models/classifier.pkl')
+model = pickle.load(open(model_path, "rb"))
 
 @app.route('/')
 @app.route('/index')
