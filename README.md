@@ -75,7 +75,7 @@ If Training a New Model:
 
 Use the process_data.py script to clean and prepare the dataset.
 Train the model with the train_classifier.py script if you want to modify or update the classifier for a new dataset.
----
+
 
 ## Features
 ### ETL Pipeline
