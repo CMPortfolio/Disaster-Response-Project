@@ -25,7 +25,7 @@ DisasterResponse/
   - DisasterResponse.db (SQLite database of cleaned data)
 - models/
   - train_classifier.py (Machine learning script for training and saving the model)
-  - classifier.pkl (Trained model saved as a pickle file)
+  - classifier.pkl (Trained model saved as a pickle file) (*IMPORTANT NOTE* This file is too large to host on this repository so it has been uploaded via google drive through this link. If you plan on retraining the model yourself then it is not needed - https://drive.google.com/file/d/168MAOW-REhAUVFxp-SHlfnT0lxAxZsXj/view?usp=sharing )
 - README.md (Project documentation)
 - requirements.txt (Python dependencies)
 
@@ -39,17 +39,24 @@ Ensure you have Python installed. Use pip to install the required dependencies:
 pip install -r requirements.txt
 ```
 
-### 2. Run the ETL Pipeline
+### 2. Run the ETL Pipeline (Skip if you plan on running the pre-trained model)
 Execute the process_data.py script to clean the data and save it into a SQLite database:
 ```
 python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
 ```
 
 ### 3. Train the Machine Learning Model
+Option 1: Train the Model
 Run the train_classifier.py script to train the model and save it as a pickle file:
-```
+...
 python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
-```
+
+Option 2: Use the Pre-Trained Model
+If you prefer not to train the model, you can download the pre-trained classifier.pkl file:
+
+Place the file in the models/ directory of the project:
+
+models/classifier.pkl
 
 ### 4. Launch the Web App
 Start the Flask web application by running:
@@ -59,9 +66,18 @@ python app/run.py
 The app will be available at http://localhost:3001.
 
 ---
+Important Notes
+If Using the Pre-Trained Model:
+
+You can skip the data cleaning (process_data.py) and model training (train_classifier.py) steps entirely.
+The DisasterResponse.db file is not required when using the pre-trained model.
+If Training a New Model:
+
+Use the process_data.py script to clean and prepare the dataset.
+Train the model with the train_classifier.py script if you want to modify or update the classifier for a new dataset.
+---
 
 ## Features
-
 ### ETL Pipeline
 - Merges datasets (disaster_messages.csv and disaster_categories.csv).
 - Cleans the data:
