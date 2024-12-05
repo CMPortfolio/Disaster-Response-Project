@@ -19,8 +19,8 @@ DisasterResponse/
     - go.html (Classification result page)
   - run.py (Flask app to serve predictions and visualizations)
 - data/
-  - disaster_categories.csv (Categories dataset)
-  - disaster_messages.csv (Messages dataset)
+  - categories.csv (Categories dataset)
+  - messages.csv (Messages dataset)
   - process_data.py (ETL script for data cleaning and storage)
   - DisasterResponse.db (SQLite database of cleaned data)
 - models/
