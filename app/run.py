@@ -5,19 +5,42 @@ from flask import Flask, render_template, request
 from sqlalchemy import create_engine
 import pickle
 import os
+import requests
 
 app = Flask(__name__)
 
 # Set base directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Load data
+# Google Drive file URL for classifier.pkl
+FILE_ID = "168MAOW-REhAUVFxp-SHlfnT0lxAxZsXj"
+GOOGLE_DRIVE_URL = f"https://drive.google.com/uc?id={FILE_ID}"
+
+# Paths for database and model
 database_path = os.path.join(BASE_DIR, '../data/DisasterResponse.db')
+model_path = os.path.join(BASE_DIR, '../models/classifier.pkl')
+
+# Ensure models directory exists
+os.makedirs(os.path.dirname(model_path), exist_ok=True)
+
+# Download model file if it doesn't exist
+if not os.path.exists(model_path):
+    print("Downloading classifier.pkl from Google Drive...")
+    response = requests.get(GOOGLE_DRIVE_URL, stream=True)
+    if response.status_code == 200:
+        with open(model_path, "wb") as f:
+            for chunk in response.iter_content(chunk_size=1024):
+                f.write(chunk)
+        print("Download complete.")
+    else:
+        print(f"Failed to download classifier.pkl. HTTP Status Code: {response.status_code}")
+        raise Exception("Could not download classifier.pkl from Google Drive")
+
+# Load data
 engine = create_engine(f'sqlite:///{database_path}')
 df = pd.read_sql_table('DisasterResponse', engine)
 
 # Load model
-model_path = os.path.join(BASE_DIR, '../models/classifier.pkl')
 model = pickle.load(open(model_path, "rb"))
 
 @app.route('/')
@@ -107,3 +130,4 @@ def go():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
+
