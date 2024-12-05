@@ -12,7 +12,7 @@ The project includes:
 ---
 
 ## Directory Structure
-DisasterResponse/
+Create a DisasterResponse/ folder and insert these subfolders in it 
 - app/
   - templates/
     - master.html (Main page of the web app)
