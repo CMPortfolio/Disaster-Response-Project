@@ -58,7 +58,7 @@ Place the file in the models/ directory of the project:
 
 models/classifier.pkl
 
-### 4. Launch the Web App
+### 4. Launch the Web App (Make sure you cd the DisasterResponse/ directory)
 Start the Flask web application by running:
 ```
 python app/run.py
